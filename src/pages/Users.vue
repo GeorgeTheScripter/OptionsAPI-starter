@@ -5,10 +5,13 @@
     </Popup>
 
     <div class="container">
-      <Input v-focus v-model="searchQuery" placehoder="Search..." />
-
-      <Button @click="showPopup">cereate post</Button>
-      <Select v-model="sortType" :options="sortOptions" />
+      <div class="controllers">
+        <Button @click="showPopup">cereate post</Button>
+        <div class="search_controllers">
+          <Select v-model="sortType" :options="sortOptions" />
+          <Input v-focus v-model="searchQuery" placehoder="Search..." />
+        </div>
+      </div>
 
       <PostList v-if="!isPostLoading" :posts="searchedAndSortedPosts" @delete="removePost" />
       <div v-else>Loading...</div>
@@ -123,5 +126,16 @@ export default {
   height: 30px;
   width: 100%;
   background: pink;
+}
+
+.controllers {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.search_controllers {
+  display: flex;
+  gap: 12px;
 }
 </style>
